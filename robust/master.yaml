@@ -1,8 +1,7 @@
-# buildbot-deployment.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: buildbot
+  name: master
   labels:
     app: buildbot
 spec:
@@ -19,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: buildbot-pv-claim
+  name: master-pv-claim
   labels:
     app: buildbot
 spec:
@@ -32,7 +31,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: buildbot
+  name: master
   labels:
     app: buildbot
 spec:
@@ -65,7 +64,7 @@ spec:
         - name: POSTGRES_DB
           value: buildbot
         - name: POSTGRES_DB_HOST
-          value: buildbot-postgres
+          value: postgres
         - name: BUILDBOT_DB_URL
           value: 'postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_DB_HOST}/{POSTGRES_DB}'
         ports:
@@ -74,9 +73,9 @@ spec:
         - containerPort: 9989
           name: worker
         volumeMounts:
-        - name: buildbot-persistent-storage
+        - name: master-persistent-storage
           mountPath: /var/lib/buildbot/builds
       volumes:
-      - name: buildbot-persistent-storage
+      - name: master-persistent-storage
         persistentVolumeClaim:
-          claimName: buildbot-pv-claim
+          claimName: master-pv-claim

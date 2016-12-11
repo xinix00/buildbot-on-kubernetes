@@ -2,12 +2,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: buildbot-postgres
+  name: postgres
   labels:
     app: buildbot
 spec:
   ports:
   - port: 5432
+    name: postgres
   selector:
     app: buildbot
     tier: postgres
@@ -29,7 +30,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: buildbot-postgres
+  name: postgres
   labels:
     app: buildbot
 spec:
@@ -52,7 +53,7 @@ spec:
         - name: POSTGRES_DB
           value: buildbot
         - name: POSTGRES_DB_HOST
-          value: buildbot-postgres
+          value: postgres
         - name: BUILDBOT_DB_URL
           value: 'postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_DB_HOST}/{POSTGRES_DB}'
         ports:
