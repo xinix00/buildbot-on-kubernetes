@@ -88,7 +88,7 @@ Happy hacking!
 [k8s-glusterfs]: http://kubernetes.io/docs/user-guide/volumes/#glusterfs
 [k8s-nfs]: http://kubernetes.io/docs/user-guide/volumes/#nfs
 [minikube-setup]: http://kubernetes.io/docs/getting-started-guides/minikube/
-[post]: #
+[post]: http://elijahcaine.me/blog/deploying-buildbot-on-kubernetes/
 [pr]: https://github.com/ElijahCaine/buildbot-on-kubernetes/pulls
 [submit-issue]: https://github.com/ElijahCaine/buildbot-on-kubernetes/issues
 [upstream]: https://github.com/buildbot/buildbot-docker-example-config
