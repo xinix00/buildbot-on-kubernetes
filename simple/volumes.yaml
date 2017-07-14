@@ -9,7 +9,7 @@ metadata:
   namespace: buildbot
 spec:
   capacity:
-    storage: 1Gi
+    storage: 50Gi
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
@@ -26,7 +26,7 @@ metadata:
   namespace: buildbot
 spec:
   capacity:
-    storage: 5Gi
+    storage: 50Gi
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
