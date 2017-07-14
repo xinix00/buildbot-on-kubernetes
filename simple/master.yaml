@@ -39,7 +39,7 @@ metadata:
   name: buildbot-master
   namespace: buildbot
   labels:
-    app: buildbot-master
+    app: buildbot
     tier: master
 spec:
   strategy:
@@ -47,7 +47,7 @@ spec:
   template:
     metadata:
       labels:
-        app: buildbot-master
+        app: buildbot
         tier: master
     spec:
       containers:
@@ -57,7 +57,7 @@ spec:
         - name: BUILDBOT_CONFIG_DIR
           value: config
         - name: BUILDBOT_CONFIG_URL
-          value: 'https://raw.githubusercontent.com/XiniX00/buildbot-on-kubernetes/master/simple/master.cfg'
+          value: 'https://raw.githubusercontent.com/xinix00/buildbot-on-kubernetes/master/simple/master.cfg'
         - name: BUILDBOT_WORKER_PORT
           value: '9989'
         - name: BUILDBOT_WEB_URL
