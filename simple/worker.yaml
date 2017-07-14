@@ -2,9 +2,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: worker
+  name: buildbot-worker
+  namespace: buildbot
   labels:
     app: buildbot
+    tier: worker
 spec:
   ports:
   - port: 9989
@@ -17,9 +19,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: worker-pv-claim
+  name: buildbot-worker-pv-claim
   labels:
-    app: buidlbot
+    app: buildbot
+    tier: worker
 spec:
   accessModes:
     - ReadWriteOnce
@@ -30,9 +33,10 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: worker
+  name: buildbot-worker
   labels:
     app: buildbot
+    tier: worker
 spec:
   strategy:
     type: Recreate
@@ -43,7 +47,7 @@ spec:
         tier: worker
     spec:
       containers:
-      - image: "buildbot/buildbot-worker:master"
+      - image: "buildbot/buildbot-worker:v0.9.9.post2"
         name: worker
         env:
         - name: BUILDMASTER
@@ -60,9 +64,9 @@ spec:
         - containerPort: 9989
           name: worker
         volumeMounts:
-        - name: worker-persistent-storage
+        - name: buildbot-worker-persistent-storage
           mountPath: /buildbot/builds
       volumes:
-      - name: worker-persistent-storage
+      - name: buildbot-worker-persistent-storage
         persistentVolumeClaim:
-          claimName: worker-pv-claim
+          claimName: buildbot-worker-pv-claim
