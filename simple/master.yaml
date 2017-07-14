@@ -33,6 +33,8 @@ spec:
     matchLabels:
       app: buildbot
       tier: master
+      volume-type: hdd
+  storageClassName: ""
   resources:
     requests:
       storage: 50Gi

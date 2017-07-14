@@ -5,6 +5,7 @@ metadata:
   labels: 
     app: buildbot
     tier: master
+    volume-type: hdd
   name: buildbot-master-pv
   namespace: buildbot
 spec:
@@ -22,6 +23,7 @@ metadata:
   labels: 
     app: buildbot
     tier: worker
+    volume-type: hdd
   name: buildbot-worker-pv
   namespace: buildbot
 spec:

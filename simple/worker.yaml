@@ -27,6 +27,12 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  selector:
+    matchLabels:
+      app: buildbot
+      tier: worker
+      volume-type: hdd
+  storageClassName: ""
   resources:
     requests:
       storage: 50Gi
@@ -53,7 +59,7 @@ spec:
         name: worker
         env:
         - name: BUILDMASTER
-          value: master
+          value: buildbot-master.buildbot.svc.cluster.local
         - name: BUILDMASTER_PORT
           value: '9989'
         - name: WORKERNAME
