@@ -29,6 +29,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  selector:
+    matchLabels:
+      app: buildbot
+      tier: master
   resources:
     requests:
       storage: 50Gi
@@ -61,7 +65,7 @@ spec:
         - name: BUILDBOT_WORKER_PORT
           value: '9989'
         - name: BUILDBOT_WEB_URL
-          value: 'http://localhost:8080/'
+          value: 'http://localhost:8080/api/v1/proxy/namespaces/buildbot/services/buildbot-master:8080/'
         - name: BUILDBOT_WEB_PORT
           value: '8080'
         ports:
