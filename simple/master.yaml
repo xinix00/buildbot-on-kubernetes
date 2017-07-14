@@ -68,7 +68,7 @@ spec:
         - containerPort: 9989
           name: worker
         volumeMounts:
-        - name: buildbot-persistent-storage
+        - name: buildbot-master-persistent-storage
           mountPath: /var/lib/buildbot/builds
       volumes:
       - name: buildbot-master-persistent-storage
