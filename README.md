@@ -8,6 +8,9 @@ Goals:
 - Create a single master and multiple slaves setup 
 
 ## Getting started
+0. Create GCE Disks:
+- buildbot-master-disk
+- buildbot-worker-disk (this one will be removed)
 
 1. Setup your local volumes.
 
@@ -16,24 +19,19 @@ $ kubectl create -f simple/volumes.yaml
 <output>
 ```
 
-2. Start the kubernetes master.
+2. Start the buildbot master.
 
 ```
 $ kubectl create -f simple/master.yaml
 <output>
 ```
 
-3. Start the kubernetes worker.
+3. Start the buildbot worker.
 
 ```
 $ kubectl create -f simple/worker.yaml
 <output>
 ```
-
-**NOTE** This step may fail as `/data/pv-1`, `/data/pv-2`, or `/data/pv-3` haven't been created yet.
-You may need to repeat this step after testing your buildbot cluster out a bit after step 5 below.
-
-If you decide to use something else like [NFS][k8s-nfs] or [Glusterfs][k8s-glusterfs] this step may not be necessary as you may be able to specify the permissions of the block device as in a kubernetes configuration file.
 
 4. Check out your cluster locally with:
 
@@ -44,6 +42,12 @@ $ kubectl get pods -l app=buildbot -l tier=master -o template --template="{{rang
 5. Test out your cluster! Go to http://localhost:8080/#/builders/ and force a new build.
 
 6. (Optional) Fork this repository and customize it to your needs. All of the necessary buildbot configuration file can be found and modified for your project's needs.
+
+## Customized docker files
+buildbot master based on buildbot/buildbot-master including Slack plugin
+- See docker/buildbot-master
+buildbot worker based on Alpine
+- See docker/buildbot-worker
 
 ## Contributing
 
