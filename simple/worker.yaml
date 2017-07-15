@@ -55,7 +55,7 @@ spec:
         tier: worker
     spec:
       containers:
-      - image: "buildbot/buildbot-worker:v0.9.9.post2"
+      - image: "xinix00/buildbot-worker:v0.9.9.post2"
         name: worker
         env:
         - name: BUILDMASTER

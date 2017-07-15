@@ -45,10 +45,11 @@ $ kubectl get pods -l app=buildbot -l tier=master -o template --template="{{rang
 
 ## Customized docker files
 buildbot master based on buildbot/buildbot-master including Slack plugin
-- See docker/buildbot-master
+- https://hub.docker.com/r/xinix00/buildbot-master/
 
 buildbot worker based on Alpine
-- See docker/buildbot-worker
+- https://hub.docker.com/r/xinix00/buildbot-worker/
+- https://hub.docker.com/r/xinix00/buildbot-worker-docker/
 
 ## Contributing
 

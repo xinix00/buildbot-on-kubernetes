@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: buildbot-master
-        image: buildbot/buildbot-master:v0.9.9.post2
+        image: xinix00/buildbot-master:v0.9.9.post2
         env:
         - name: BUILDBOT_CONFIG_DIR
           value: config
